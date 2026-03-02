@@ -108,7 +108,6 @@ The project uses a **star schema model** consisting of:
 - **1 Fact Table:** Fact_Orders
 - **5 Dimension Tables:** Dim_Customers, Dim_Products, Dim_Locations, Dim_SalesPeople, Dim_Date
 
----
 
 #### 2️⃣ Table Schema & Data Snapshot  
 
@@ -185,22 +184,18 @@ The project uses a **star schema model** consisting of:
 </details>
 
 
----
 
 #### 3️⃣ Data Relationships  
-
-- **Fact_Orders → Dim_Customers** (Many-to-One)  
-- **Fact_Orders → Dim_Products** (Many-to-One)  
-- **Fact_Orders → Dim_Locations** (Many-to-One)  
-- **Fact_Orders → Dim_SalesPeople** (Many-to-One)  
-- **Fact_Orders → Dim_Date** (Many-to-One)  
-- **Fact_Orders → Returns** (One-to-Many via Order_ID)  
-
-**This structure ensures:**  
-
-- ✔️ Clean filtering  
-- ✔️ Strong time intelligence support  
-- ✔️ Efficient market & product drill-down  
+![Image](https://github.com/user-attachments/assets/8745648b-c585-4d48-9456-32587bd00425)
+| **From Table (Fact)** | **To Table (Dimension)** | **Join Key**          | **Relationship Type** | **Description**                                                     |
+| --------------------- | ------------------------ | --------------------- | --------------------- | ------------------------------------------------------------------- |
+| `Fact_Orders`         | `Dim_Customers`          | `Customer ID`         | Many-to-One (*:1)     | Multiple orders belong to one customer                              |
+| `Fact_Orders`         | `Dim_SalePeople`         | `Person ID`           | Many-to-One (*:1)     | Multiple orders handled by one salesperson                          |
+| `Fact_Orders`         | `Dim_Products`           | `Product Key`         | Many-to-One (*:1)     | Multiple orders for one product                                     |
+| `Fact_Orders`         | `Dim_Locations`          | `Location ID`         | Many-to-One (*:1)     | Multiple orders belong to one location                              |
+| `Fact_Orders`         | `Dim_Date`               | `Order Date` → `Date` (active) | Many-to-One (*:1)     | Multiple orders occur on one date  
+| `Fact_Orders`         | `Dim_Date`               | `Ship Date` → `Date` (inactive) | Many-to-One (*:1)     | Multiple shipped orders occur on one date                                     |
+| `Fact_Orders`         | `Returns`                | `Order ID`            | Many-to-One (*:1)     | Multiple orders may appear in Returns table (not all orders are returned) |
 
 ---
 
@@ -265,95 +260,124 @@ _Not all revenue growth translates to sustainable profitability._
 
 ### 🔍 Dashboard 1: Business Overview  
 
-👉🏻 _Insert screenshot of Business Overview page_  
+![Image](https://github.com/user-attachments/assets/270e5fdb-d93f-4bf2-8daf-ecc81a07493f)
 
----
 
-#### 📌 Analysis 1  
+#### 📌 Overall Business Performance
 
 **Observation:**  
 
-- Revenue shows steady year-over-year growth  
-- Profit growth fluctuates and does not always follow revenue trend  
-- Profit margin varies across periods  
-- Return rate impacts net performance  
+- Revenue increases steadily from 2011 to 2014, showing strong business growth.
+
+- Profit also rises, but not always at the same speed as revenue, which may indicate pressure on profit margin.
+
+- Profit margin reaches its highest point around 2013 and then decreases slightly, possibly due to higher costs or more discounting.
+
+- Total orders grow every year, showing increasing customer demand.
+
+- The number of returns also increases over time, which can reduce overall profit if not managed well.
+
+- Revenue comes from multiple markets (APAC, EU, US, LATAM, EMEA), helping the company avoid relying too much on one region.
 
 **Recommendation:**  
 
-- ✔️ Monitor **profit margin** alongside revenue growth  
-- ✔️ Investigate cost and discount drivers affecting margin  
-- ✔️ Improve return management process to protect profitability  
+- ✔️ Focus not only on revenue growth but also on maintaining healthy profit margins.
 
----
+- ✔️ Review costs and discount policies to understand what is affecting margin performance.
+
+- ✔️ Improve product strategy by promoting higher-margin products where possible.
+
+- ✔️ Improve return management processes to reduce losses and protect profitability.
+
+- ✔️ Expand more in markets that show both strong growth and good profit margins to improve long-term results.
+
 
 ### 📦 Dashboard 2: Product Analysis  
 
-👉🏻 _Insert screenshot of Product Analysis page_  
+![Image](https://github.com/user-attachments/assets/41174e5d-999c-436c-a73c-2e9a77dc0353)
 
----
 
-#### 📌 Analysis 2  
+#### 📌 Product Analysis 
 
 **Observation:**  
 
-- **Technology category** generates highest revenue  
-- Some sub-categories show high sales but **lower margin**  
-- Profit contribution is concentrated among top-performing products  
-- Certain products exhibit higher return rates  
+- Phones and Copiers generate the highest revenue and profit, making them the key revenue drivers. Copiers show a particularly strong profit margin (around 17%), indicating good pricing power.
+
+- Chairs and Bookcases generate high revenue but lower margin compared to Copiers, suggesting higher costs or heavier discounting.
+
+- Some sub-categories such as Tables and Accessories show relatively weaker profit performance, even though revenue is moderate. This may indicate inefficient cost control.
+
+- The Top 10 products are dominated by smartphones and technology-related items, confirming that Technology is a strategic category.
+
+- The scatter plot shows that most markets generate positive profit, but at least one market has negative profit despite having orders, which is a warning sign.
+
+- Return rate is relatively high in some sub-categories (over 30–50%), which can significantly reduce net profit if not managed carefully.
 
 **Recommendation:**  
 
-- ✔️ Prioritize **high-margin product lines**  
-- ✔️ Reevaluate low-margin or high-return products  
-- ✔️ Apply portfolio optimization strategy to improve overall margin  
+- ✔️ Prioritize high-margin sub-categories like Copiers and Phones in marketing and expansion strategies.
 
----
+- ✔️ Review pricing and cost structure of low-margin products (e.g., Tables, Accessories) to improve profitability.
+
+- ✔️ Strengthen inventory and demand planning for top-performing products to avoid stock shortages.
+
+- ✔️ Carefully analyze markets with negative or low profit despite strong order volume to identify pricing or operational issues.
+
+- ✔️ Implement stricter return policies or improve product quality and descriptions to reduce high return rates.
+
+- ✔️ Focus future product strategy on Technology-related items, as they show strong revenue contribution and competitive margins.
 
 ### 🌍 Dashboard 3: Market Analysis  
 
-👉🏻 _Insert screenshot of Market Analysis page_  
+![Image](https://github.com/user-attachments/assets/91cacb29-8f55-4fd4-922f-239ad0ca263f)
 
----
 
-#### 📌 Analysis 3  
+#### 📌 Market Analysis
 
 **Observation:**  
 
-- Revenue distribution varies significantly by market  
-- **Not all high-revenue markets maintain strong profit margins**  
-- Customer base differs widely between regions  
-- Regional profitability efficiency is inconsistent  
+- APAC and EU generate the highest revenue, making them the main contributors to overall sales performance.
+
+- EMEA shows strong Year-over-Year growth, even though its total revenue is lower than APAC and EU. This indicates high growth potential.
+
+- Africa has a high profit margin compared to some larger markets, suggesting efficient cost control or strong pricing strategy.
+
+- Canada has very low revenue and customer volume, contributing minimally to overall performance.
+
+- The number of customers is relatively stable across major markets (APAC, EU, LATAM, US), showing balanced market coverage.
+
+- Revenue growth rate varies by region, meaning expansion performance is not equally distributed.
+
+- Top sales agents contribute significantly to revenue, indicating that sales performance is partly driven by key individuals.
 
 **Recommendation:**  
 
-- ✔️ Expand in markets with **strong margin performance**  
-- ✔️ Reassess pricing and operational costs in low-margin markets  
-- ✔️ Align regional strategies with profitability targets  
+- ✔️ Maintain strong investment and customer retention strategies in APAC and EU, as they are core revenue markets.
+
+- ✔️ Prioritize expansion in EMEA, where growth rate is high and future potential looks promising.
+
+- ✔️ Study the Africa market model to understand how it maintains higher profit margin and apply best practices to other regions.
+
+- ✔️ Re-evaluate strategy in Canada, considering whether to restructure, reposition, or limit investment.
+
+- ✔️ Develop training and incentive programs to scale the performance of top sales agents across other teams.
+
+- ✔️ Allocate resources based on both revenue size and profit margin, not revenue alone, to maximize long-term ROI.
 
 ---
 
 ## 🔎 Final Conclusion & Recommendations  
 
-👉🏻 Based on the insights above, we recommend the **Executive & Strategy Team** to consider the following:  
-
----
+👉🏻 Based on the insights from Business, Product, and Market Analysis above, we recommend the Senior Management team to consider the following actions:
 
 ### 📌 Key Takeaways  
 
-- ✔️ **Shift performance focus** from revenue-driven growth to **profit-driven growth**  
-- ✔️ **Prioritize expansion** in high-margin markets rather than high-revenue markets  
-- ✔️ **Optimize product portfolio** by reducing low-margin and high-return items  
-- ✔️ **Monitor return rate** as a key operational risk indicator  
+- ✔️ Focus on sustainable growth by balancing revenue expansion with stable profit margins, rather than pursuing revenue alone.
 
----
+- ✔️ Prioritize high-margin products and high-growth markets (such as Technology category and EMEA market) to maximize long-term profitability.
 
-### 🚀 Business Impact  
+- ✔️ Improve cost control and return management to reduce margin pressure and protect overall business performance.
 
-This project demonstrates:  
+- ✔️ Allocate resources strategically by investing more in profitable markets (APAC, EU, EMEA) while reviewing underperforming markets like Canada.
 
-- ✅ Strong **data modeling capability**  
-- ✅ **Executive-focused** dashboard design  
-- ✅ Strategic thinking beyond descriptive reporting  
-- ✅ **Business-aligned** analytical storytelling  
-
----
+- ✔️ Strengthen product and sales strategy by scaling best-performing products and applying top sales practices across regions.
