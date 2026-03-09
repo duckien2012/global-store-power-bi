@@ -187,15 +187,6 @@ The project uses a **star schema model** consisting of:
 
 #### 3️⃣ Data Relationships  
 ![Image](https://github.com/user-attachments/assets/8745648b-c585-4d48-9456-32587bd00425)
-| **From Table (Fact)** | **To Table (Dimension)** | **Join Key**          | **Relationship Type** | **Description**                                                     |
-| --------------------- | ------------------------ | --------------------- | --------------------- | ------------------------------------------------------------------- |
-| `Fact_Orders`         | `Dim_Customers`          | `Customer ID`         | Many-to-One (*:1)     | Multiple orders belong to one customer                              |
-| `Fact_Orders`         | `Dim_SalePeople`         | `Person ID`           | Many-to-One (*:1)     | Multiple orders handled by one salesperson                          |
-| `Fact_Orders`         | `Dim_Products`           | `Product Key`         | Many-to-One (*:1)     | Multiple orders for one product                                     |
-| `Fact_Orders`         | `Dim_Locations`          | `Location ID`         | Many-to-One (*:1)     | Multiple orders belong to one location                              |
-| `Fact_Orders`         | `Dim_Date`               | `Order Date` → `Date` (active) | Many-to-One (*:1)     | Multiple orders occur on one date  
-| `Fact_Orders`         | `Dim_Date`               | `Ship Date` → `Date` (inactive) | Many-to-One (*:1)     | Multiple shipped orders occur on one date                                     |
-| `Fact_Orders`         | `Returns`                | `Order ID`            | Many-to-One (*:1)     | Multiple orders may appear in Returns table (not all orders are returned) |
 
 ---
 
@@ -265,31 +256,27 @@ _Not all revenue growth translates to sustainable profitability._
 
 #### 📌 Overall Business Performance
 
-**Observation:**  
+**Key Findings:**  
 
-- Revenue increases steadily from 2011 to 2014, showing strong business growth.
+- **Overall KPIs:**
+    - Revenue (**$12.64M**), Profit (**$1.47M**), and Orders (**25K**) all grew by about **51-52%**. 
+    - The best point is the **Return Rate**, which dropped by **34.1%** to **4.68%**. This shows the company is increasing its sales volume while improving its service quality.
 
-- Profit also rises, but not always at the same speed as revenue, which may indicate pressure on profit margin.
+- **Revenue and Profit Over Time:**
+    - Sales show a very strong **seasonal pattern** from **2011 to 2014**. Revenue always drops to its **lowest** point in **Q1** and always reaches its **highest** peak in **Q4**.
+    - During these high sales periods, the **Profit Margin** stayed stable between **10.13% and 13.11%**. This means the company managed its costs well and did not cut prices just to get more sales.
 
-- Profit margin reaches its highest point around 2013 and then decreases slightly, possibly due to higher costs or more discounting.
+- **Market Contribution vs. Growth:**
+    - There is a clear divergence between scale and growth rate. **APAC** (**$3.59M**) and **EU** (**$2.94M**) brought in the most money, contributing **>51%** of total revenue. 
+    - However, the future growth engines lie in **EMEA** (**+59.80%**) and **Africa** (**+56.52%**). Meanwhile, the **US market** shows signs of saturation, recording the lowest growth rate across all regions at **46.95%**.
 
-- Total orders grow every year, showing increasing customer demand.
+- **Total Return and Orders Over Time:**
+    - While transaction volume nearly doubled (from **4.4K in 2011** to **8.5K in 2014**), the number of returned orders only increased slightly (from **0.5K** to **1.0K**).
+    - The growth rate of returns is much **slower** than sales growth, reinforcing the solid risk management capabilities of the Logistics and Customer Service operations.
 
-- The number of returns also increases over time, which can reduce overall profit if not managed well.
-
-- Revenue comes from multiple markets (APAC, EU, US, LATAM, EMEA), helping the company avoid relying too much on one region.
-
-**Recommendation:**  
-
-- ✔️ Focus not only on revenue growth but also on maintaining healthy profit margins.
-
-- ✔️ Review costs and discount policies to understand what is affecting margin performance.
-
-- ✔️ Improve product strategy by promoting higher-margin products where possible.
-
-- ✔️ Improve return management processes to reduce losses and protect profitability.
-
-- ✔️ Expand more in markets that show both strong growth and good profit margins to improve long-term results.
+- **Revenue by Market and Category:**
+    - Consumer behavior shows distinct regional fragmentation. While most markets maintain a balanced proportion among categories (each **>25%**), **Canada** emerges as a unique niche market: 
+        - **Office Supplies** overwhelmingly dominates at **44.88%**, whereas **Furniture** is underperforming at merely **15.83%**.
 
 
 ### 📦 Dashboard 2: Product Analysis  
@@ -299,33 +286,22 @@ _Not all revenue growth translates to sustainable profitability._
 
 #### 📌 Product Analysis 
 
-**Observation:**  
+**Key Findings:**  
 
-- Phones and Copiers generate the highest revenue and profit, making them the key revenue drivers. Copiers show a particularly strong profit margin (around 17%), indicating good pricing power.
+- **Revenue Contribution by Category:** 
+    - **Technology** is the core business driver, contributing the largest revenue share at $**4.74M** (**37.53%**). 
+    - **Furniture** ($**4.11M**) and **Office Supplies** ($**3.79M**) follow closely, showing a relatively balanced product portfolio at the top category level.
 
-- Chairs and Bookcases generate high revenue but lower margin compared to Copiers, suggesting higher costs or heavier discounting.
+- **Revenue and Profit by Sub-Category:**
+    - **"Phones"** lead in total revenue ($**1.70M**), but **"Copiers"** are the true profit engine, generating the highest absolute profit of $**258K** with an outstanding **17.13%** margin. On the opposite end, **"Tables"** generate a substantial $**757K** in revenue but suffer from severe **negative profitability**.
 
-- Some sub-categories such as Tables and Accessories show relatively weaker profit performance, even though revenue is moderate. This may indicate inefficient cost control.
-
-- The Top 10 products are dominated by smartphones and technology-related items, confirming that Technology is a strategic category.
-
-- The scatter plot shows that most markets generate positive profit, but at least one market has negative profit despite having orders, which is a warning sign.
-
-- Return rate is relatively high in some sub-categories (over 30–50%), which can significantly reduce net profit if not managed carefully.
-
-**Recommendation:**  
-
-- ✔️ Prioritize high-margin sub-categories like Copiers and Phones in marketing and expansion strategies.
-
-- ✔️ Review pricing and cost structure of low-margin products (e.g., Tables, Accessories) to improve profitability.
-
-- ✔️ Strengthen inventory and demand planning for top-performing products to avoid stock shortages.
-
-- ✔️ Carefully analyze markets with negative or low profit despite strong order volume to identify pricing or operational issues.
-
-- ✔️ Implement stricter return policies or improve product quality and descriptions to reduce high return rates.
-
-- ✔️ Focus future product strategy on Technology-related items, as they show strong revenue contribution and competitive margins.
+- **Profit & Total Orders by Sub-Category:**
+    - **High Profit, Low-to-Medium Orders:** **Copiers** lead this group. With only **~2,300 orders**, they generate the highest system profit (**>$250K**). They sell less but deliver excellent margins, meaning they require minimal operational effort for maximum financial return.
+    - **High Profit, High Orders:** **Phones** (**~3,200 orders**, **>$200K profit**), **Chairs**, and **Accessories** drive the main cash flow. This means they are the core lifeline of the business, maintaining steady revenue and profitability.
+    - **Low Profit, Very High Orders:** **Binders**, **Storage**, **Art**, and **Paper** have huge volumes (**Binders** hit **>5,000 orders**) but thin margins (**<$100K profit**). They cost a lot to pack and ship, meaning they drain logistics resources and human effort just to retain customers without bringing real financial gain.
+    - **Near-Zero Profit, Low Orders:** **Envelopes**, **Fasteners**, **Labels**, and **Supplies** stay around **~2,000 orders** with almost **zero profit**. This means they are essentially dead inventory taking up valuable warehouse space without generating financial value.
+    - **Negative Profit (The Loss-Maker):** **Tables** are the only product losing money (**~$60K loss**) despite nearly **1,000 orders**. This indicates a critical financial leak, likely because the high shipping and storage costs for these bulky items completely destroy their margins.
+- **Top 10 Products by Revenue:** The best-selling individual items are overwhelmingly dominated by high-ticket smartphones from major brands like **Apple**, **Cisco**, **Motorola**, and **Nokia**. The **"Apple Smart Phone"** ranks first, bringing in $**87K** independently, confirming that premium tech devices are the biggest revenue pullers at the item level.
 
 ### 🌍 Dashboard 3: Market Analysis  
 
@@ -334,50 +310,33 @@ _Not all revenue growth translates to sustainable profitability._
 
 #### 📌 Market Analysis
 
-**Observation:**  
+**Key Findings:**  
 
-- APAC and EU generate the highest revenue, making them the main contributors to overall sales performance.
+- **Revenue and Profit by Market:** 
+    - **APAC** and **EU** lead in total revenue, but **Canada** stands out with the highest **profit margin** at **26.62%** despite having the lowest sales volume. 
+    - This means **Canada** is a highly efficient premium market, while **EMEA** (with the lowest margin at **5.46%**) suffers from high operational costs that heavily reduce its actual earnings.
 
-- EMEA shows strong Year-over-Year growth, even though its total revenue is lower than APAC and EU. This indicates high growth potential.
+- **Revenue YoY% by Market:** 
+    - **EMEA** and **Africa** record the highest year-over-year growth rates at **59.80%** and **56.52%**. Meanwhile, the **US market** shows the slowest growth at **46.95%**.
+    - This indicates that **EMEA** and **Africa** are the new growth engines with high future potential, whereas the **US** has reached a saturation point with limited room for rapid expansion.
 
-- Africa has a high profit margin compared to some larger markets, suggesting efficient cost control or strong pricing strategy.
+- **Total Customers by Market:** 
+    - Major regions like **APAC**, **LATAM**, **US**, and **EU** maintain large and equal customer bases of around **800 customers** each. **Canada** has a very small customer pool of under **200**. 
+    - This confirms **Canada** operates as a specialized niche market, depending on high-value individual sales rather than mass market volume.
 
-- Canada has very low revenue and customer volume, contributing minimally to overall performance.
-
-- The number of customers is relatively stable across major markets (APAC, EU, LATAM, US), showing balanced market coverage.
-
-- Revenue growth rate varies by region, meaning expansion performance is not equally distributed.
-
-- Top sales agents contribute significantly to revenue, indicating that sales performance is partly driven by key individuals.
-
-**Recommendation:**  
-
-- ✔️ Maintain strong investment and customer retention strategies in APAC and EU, as they are core revenue markets.
-
-- ✔️ Prioritize expansion in EMEA, where growth rate is high and future potential looks promising.
-
-- ✔️ Study the Africa market model to understand how it maintains higher profit margin and apply best practices to other regions.
-
-- ✔️ Re-evaluate strategy in Canada, considering whether to restructure, reposition, or limit investment.
-
-- ✔️ Develop training and incentive programs to scale the performance of top sales agents across other teams.
-
-- ✔️ Allocate resources based on both revenue size and profit margin, not revenue alone, to maximize long-term ROI.
-
+- **Top 5 Sale Agents:** 
+    - **Anna Andreadi** dominates the sales team by bringing in **$2.8M** in revenue, nearly double the second-place agent, **Chuck Magee** (**$1.6M**). 
+    - This means the company's sales performance is highly unbalanced and overly dependent on a **single top performer**, creating a huge structural risk for the business.
 ---
 
 ## 🔎 Final Conclusion & Recommendations  
 
 👉🏻 Based on the insights from Business, Product, and Market Analysis above, we recommend the Senior Management team to consider the following actions:
 
-### 📌 Key Takeaways  
+| **Strategy** | **Insight** | **Recommendation** |
+|-------------|-------------|-------------------|
+| 🌍 **1. Market & Sales Expansion Strategy** | - **APAC** & **EU** act as the primary cash cows stabilizing the business.<br>- **Canada** operates strictly as a highly efficient premium niche market.<br>- **EMEA** & **Africa** are the new growth engines, though **EMEA** struggles with profit-draining operational costs.<br>- The **US market** shows clear signs of saturation.<br>- Overall sales are heavily driven by end-of-year seasonality. | - Protect core revenue in **APAC** & **EU** with loyalty programs.<br>- Invest aggressively in **EMEA** & **Africa** to capture growth, but urgently optimize **EMEA's** operational costs to improve its margin.<br>- Treat **Canada** as a specialized premium market (focus on **Office Supplies**).<br>- Run **Q1** promotions to offset seasonal drops and prepare inventory early for **Q4**. |
+| 🛒 **2. Product & Sales Portfolio Optimization** | - **Technology** is the ultimate profit driver for the company.<br>- High-margin items (**Copiers**) deliver maximum financial return with minimal operational effort, while **Phones** drive massive cash flow.<br>- High-volume items (**Binders**, **Paper**) drain logistics resources just to retain customers without bringing real financial gain.<br>- **Tables** represent a critical financial leak, destroying overall profitability. | - Push Sales KPIs toward high-margin **Copiers** and high-volume **Phones**.<br>- Bundle low-profit items (**Binders**, **Paper**) or set Minimum Order Values to cut packing/shipping costs.<br>- **Review or Drop Tables**: Urgently audit pricing and shipping costs for **Tables**; if unfixable, stop selling them immediately.<br>- Clear dead inventory (**Envelopes**, **Labels**) to save warehouse space. |
+| 👥 **3. Sales Capability & Performance Gap** | - Sales performance is dangerously unbalanced and overly dependent on a **single top performer**.<br>- This extreme concentration creates a massive structural and dependency risk for the business if this individual leaves or underperforms. | - De-risk sales dependency by studying the top performer's winning techniques and creating a standardized training program for the rest of the team.<br>- Shift KPIs from purely closing volume to up-selling high-margin items (like **Copiers**) to boost overall profitability. |
+| ⚙️ **4. Operational Efficiency & Risk Control** | - The company successfully scaled its order volume while sharply reducing the **return rate**.<br>- This divergence indicates excellent risk management, highly optimized logistics, and strong quality control during a period of rapid expansion. | - **Standardize current SOPs**: Document the successful logistics and customer service processes that kept return rates low, and enforce them in fast-growing regions (**EMEA**, **Africa**).<br>- Prioritize warehouse space for fast-moving, high-margin goods (**Phones**, **Chairs**) to ensure they are never out of stock. |
 
-- ✔️ Focus on sustainable growth by balancing revenue expansion with stable profit margins, rather than pursuing revenue alone.
-
-- ✔️ Prioritize high-margin products and high-growth markets (such as Technology category and EMEA market) to maximize long-term profitability.
-
-- ✔️ Improve cost control and return management to reduce margin pressure and protect overall business performance.
-
-- ✔️ Allocate resources strategically by investing more in profitable markets (APAC, EU, EMEA) while reviewing underperforming markets like Canada.
-
-- ✔️ Strengthen product and sales strategy by scaling best-performing products and applying top sales practices across regions.
