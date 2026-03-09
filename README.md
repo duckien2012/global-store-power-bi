@@ -1,5 +1,4 @@
-# 📊 Global Superstore Performance Analysis  
-**Business Expansion & Profitability Optimization | Retail Industry | Power BI**
+# 📊 Global Superstore Performance Analysis | Power BI
 
 **Author:** Hoàng Đức Kiên  
 **Date:** 2026-03-02  
