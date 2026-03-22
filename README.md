@@ -1,4 +1,4 @@
-# 📊 Global Superstore Performance Analysis | Power BI
+# 📊 Sales Performance and Market Analysis for Global Superstore | Power BI
 
 **Author:** Hoàng Đức Kiên  
 **Date:** 2025
